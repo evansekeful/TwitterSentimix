@@ -19,14 +19,14 @@ bearer_token = config["bearer-token"]
 client = tweepy.asynchronous.AsyncClient(bearer_token=bearer_token)
 
 keyword = 'elon'
-no_tweets = 1000
+no_tweets = 300
 
 limit = int(np.ceil(no_tweets / 100))
 data = []
 
 async def fetch_tweet(keyword):
     response = await client.search_recent_tweets(keyword, 
-                        tweet_fields=['created_at', 'lang', 'geo','author_id'],max_results=100)
+                        tweet_fields=['created_at', 'lang','author_id'],max_results=100)
     return response
 
 while limit > 0:

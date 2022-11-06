@@ -7,6 +7,7 @@ import json
 import tweepy
 from tweepy import asynchronous
 import asyncio
+import time
 from datetime import datetime, timedelta, date
 
 config_path = "tweets\config.json"
@@ -31,6 +32,7 @@ async def fetch_tweet(keyword):
 while limit > 0:
     response = asyncio.run(fetch_tweet(keyword))
     data.extend(response.data)
+    time.sleep(30)
     limit -= 1
 
 df = pd.DataFrame.from_dict(data)
